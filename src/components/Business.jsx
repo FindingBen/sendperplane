@@ -26,12 +26,12 @@ const Business = () => {
     <section id='features' className={layout.section}>
       <div className={layout.sectionInfo}>
         <h2 className={styles.heading2}>
-          Not sure how to structure your ad content?<br className='sm:block hidden'/>
-          We got that covered.
+          Keep all your contacts at one place!<br className='sm:block hidden'/>
+          
         </h2>
-        <p className={`${styles.paragraph} max-w-[470px]`}>Using our features on platform you can
-          create your own ad and get feedback on it before
-          sending it to you customers. 
+        <p className={`${styles.paragraph} max-w-[470px]`}>Our simple platform provides an option where you 
+        can store your contacts in form of contact list which will allow you to send bulk texts, weather its notification of event, or promotion of your 
+        brand, we got you!
         </p>
         <Button styles="mt-10" />
       </div>
