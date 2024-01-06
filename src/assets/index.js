@@ -26,10 +26,18 @@ import twitter from "./twitter.svg";
 import people01 from "./people01.png";
 import people02 from "./people02.png";
 import people03 from "./people03.png";
+import tablet from "./tabletMock.jpg";
+import mcbook from "./mcbook.png";
+import logoText from "./spplaneLogo.png";
+import noBgLogo from "./noBgLogo.png";
+import mock4 from "./all-devices-white.png";
+import mock5 from "./laptop.png";
 
 export {
   airbnb,
   bill,
+  mcbook,
+  tablet,
   binance,
   card,
   mockup3,
@@ -56,4 +64,8 @@ export {
   people01,
   people02,
   people03,
+  logoText,
+  noBgLogo,
+  mock4,
+  mock5,
 };

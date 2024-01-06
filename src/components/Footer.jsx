@@ -1,5 +1,5 @@
 import style from "../style";
-import { logo } from "../assets";
+import { logo,logoText } from "../assets";
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => (
@@ -7,9 +7,9 @@ const Footer = () => (
   <div className={`${style.flexStart} md:flex-row flex-col mb-8 w-full`}>
     <div className="flex-[1] flex flex-col justify-start mr-10">
       <img
-        src={logo}
+        src={logoText}
         alt="hoobank"
-        className="w-[266px] h-[72.14px] object-contain"
+        className="w-[266px] h-[72.14px] object-cover rounded-lg"
       />
       <p className={`${style.paragraph} mt-4 max-w-[312px]`}>
         Connect - Engage - Grow

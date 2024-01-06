@@ -13,7 +13,7 @@ const GetStarted = () => {
               </span>
               
           </p>
-          <img className='w-[23px] h-[23px] object-contain' src={arrowUp} />
+          <a href='https://spplane.app/register' target='_blank' className='cursor-pointer'><img className='w-[23px] h-[23px] object-contain' src={arrowUp} /></a>
         </div>
         <p className='font-poppins font-medium text-[18px] leading-[23px]'>
               <span className='text-gradient'>
