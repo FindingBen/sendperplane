@@ -36,7 +36,7 @@ const App = () => {
         {/* <Stats /> */}
         <Business />
         <div className='flex flex-row'>
-        <ProductVideo/>
+        <ProductVideo id='product'/>
         <div className='mx-auto'>
         <h1 className='flex-1 font-poppins ml-5 font-semibold ss:text-[52px] text-[32px] text-white ss:leading-[70px]
           leading-[30px]'>See what <br className='sm:block hidden'/>
