@@ -36,7 +36,7 @@ const Footer = () => (
           </ul>
         </div>
       ))} */}
-      <div className="flex flex-col ss:my-0 my-4 min-w-[150px] xs:mx-auto">
+      <div className="flex flex-col ss:my-0 my-4 min-w-[150px]">
         <h2 className="font-poppins font-medium text-[18px] leading-[27px] text-white">Contact</h2>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">Mobile: +4552529924</p>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">Email: spp@sendperplane.com</p>
