@@ -16,8 +16,8 @@ const App = () => {
     <div className={`bg-primary ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
         <Hero />
-        <div className='flex flex-row'>
-        <img src={tablet} alt="billing" className="w-[60%] h-[40%] relative z-[5]" />
+        <div className='flex flex-row xs:flex-col xs:items-center'>
+        <img src={tablet} alt="billing" className="w-[60%] h-[40%] relative z-[5] xs:mb-5" />
         <div className="absolute z-[0] w-[100%] h-[40%] right-20 bottom-[20px] blue__gradient" />
         <div className='flex flex-col items-start w-full'>
           <h1 className='flex-1 font-poppins ml-5 font-semibold ss:text-[52px] text-[32px] text-white ss:leading-[70px]
@@ -38,7 +38,7 @@ const App = () => {
         <div className='flex flex-row'>
         <ProductVideo id='product'/>
         <div className='mx-auto'>
-        <h1 className='flex-1 font-poppins ml-5 font-semibold ss:text-[52px] text-[32px] text-white ss:leading-[70px]
+        <h1 className='flex-1 font-poppins ml-5 font-semibold ss:text-[52px] text-[32px] text-white xs:hidden ss:leading-[70px]
           leading-[30px]'>See what <br className='sm:block hidden'/>
           is Sendperplane and how it works!</h1>
         </div>

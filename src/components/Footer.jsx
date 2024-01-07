@@ -5,7 +5,7 @@ import { footerLinks, socialMedia } from "../constants";
 const Footer = () => (
   <section className={`${style.flexCenter} ${style.paddingY} flex-col`}>
   <div className={`${style.flexStart} md:flex-row flex-col mb-8 w-full`}>
-    <div className="flex-[1] flex flex-col justify-start mr-10">
+    <div className="flex-[1] flex flex-col justify-start mr-10 xs:mx-auto">
       <img
         src={logoText}
         alt="hoobank"
@@ -36,7 +36,7 @@ const Footer = () => (
           </ul>
         </div>
       ))} */}
-      <div className="flex flex-col ss:my-0 my-4 min-w-[150px]">
+      <div className="flex flex-col ss:my-0 my-4 min-w-[150px] xs:mx-auto">
         <h2 className="font-poppins font-medium text-[18px] leading-[27px] text-white">Contact</h2>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">Mobile: +4552529924</p>
         <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">Email: spp@sendperplane.com</p>
