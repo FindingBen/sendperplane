@@ -1,23 +1,23 @@
 import style from "../style";
-import { logo,logoText } from "../assets";
+import { logo, logoText } from "../assets";
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => (
   <section className={`${style.flexCenter} ${style.paddingY} flex-col`}>
-  <div className={`${style.flexStart} md:flex-row flex-col mb-8 w-full`}>
-    <div className="flex-[1] flex flex-col justify-start mr-10 xs:mx-auto">
-      <img
-        src={logoText}
-        alt="hoobank"
-        className="w-[266px] h-[72.14px] object-cover rounded-lg"
-      />
-      <p className={`${style.paragraph} mt-4 max-w-[312px]`}>
-        Connect - Engage - Grow
-      </p>
-    </div>
+    <div className={`${style.flexStart} md:flex-row flex-col mb-8 w-full`}>
+      <div className="flex-[1] flex flex-col justify-start mr-10 xs:mx-auto">
+        <img
+          src={logoText}
+          alt="hoobank"
+          className="w-[266px] h-[72.14px] object-cover rounded-lg"
+        />
+        <p className={`${style.paragraph} mt-4 max-w-[312px]`}>
+          Connect - Engage - Grow
+        </p>
+      </div>
 
-    <div className="flex-[1.5] w-full flex flex-row justify-end flex-wrap md:mt-0 mt-10">
-      {/* {footerLinks.map((footerlink) => (
+      <div className="flex-[1.5] w-full flex flex-row justify-end flex-wrap md:mt-0 mt-10">
+        {/* {footerLinks.map((footerlink) => (
         <div key={footerlink.title} className={`flex flex-col ss:my-0 my-4 min-w-[150px]`}>
           <h4 className="font-poppins font-medium text-[18px] leading-[27px] text-white">
             {footerlink.title}
@@ -36,20 +36,26 @@ const Footer = () => (
           </ul>
         </div>
       ))} */}
-      <div className="flex flex-col ss:my-0 my-4 min-w-[150px]">
-        <h2 className="font-poppins font-medium text-[18px] leading-[27px] text-white">Contact</h2>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">Mobile: +4552529924</p>
-        <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">Email: spp@sendperplane.com</p>
+        <div className="flex flex-col ss:my-0 my-4 min-w-[150px]">
+          <h2 className="font-poppins font-medium text-[18px] leading-[27px] text-white">
+            Contact
+          </h2>
+          <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">
+            Mobile: +4552529924
+          </p>
+          <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">
+            Email: beniagic@gmail.com
+          </p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-    <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
-      Copyright Ⓒ 2023 Sendperplane. All Rights Reserved.
-    </p>
+    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
+      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+        Copyright Ⓒ 2023 Sendperplane. All Rights Reserved.
+      </p>
 
-    {/* <div className="flex flex-row md:mt-0 mt-6">
+      {/* <div className="flex flex-row md:mt-0 mt-6">
       {socialMedia.map((social, index) => (
         <img
           key={social.id}
@@ -62,8 +68,8 @@ const Footer = () => (
         />
       ))}
     </div> */}
-  </div>
-</section>
-)
+    </div>
+  </section>
+);
 
-export default Footer
+export default Footer;
