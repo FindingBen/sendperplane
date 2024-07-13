@@ -40,7 +40,7 @@ const Footer = () => (
             Contact
           </h2>
           <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">
-            Mobile: +4552529924
+            Mobile: +45 52 52 99 24
           </p>
           <p className="font-poppins font-normal text-[16px] leading-[24px] text-dimWhite hover:text-secondary cursor-pointer">
             Email: beniagic@gmail.com
