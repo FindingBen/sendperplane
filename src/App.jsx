@@ -10,7 +10,6 @@ import individualImages from "./assets/individual/index.js";
 const App = () => {
   const [userType, setUserType] = useState("");
   const [images, setImages] = useState([]);
-  console.log(images);
   const handleUserTypeSelect = (type) => {
     setUserType(type);
     if (type === "retail") {
