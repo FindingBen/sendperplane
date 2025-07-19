@@ -3,6 +3,7 @@ import styles from "./style";
 import { Navbar, Business, Hero, Footer } from "./components";
 import ProductVideo from "./components/ProductVideo";
 import { tablet } from "./assets";
+import { mock6 } from "./assets";
 import ButtonTypeUser from "./components/ButtonTypeUser";
 import Carousel from "./components/Carousel";
 import retailImages from "./assets/retail/index.js"; // Adjust the path according to your folder structure
@@ -27,31 +28,12 @@ const App = () => {
         </div>
       </div>
 
-      <div
-        className={`bg-primary flex flex-col items-center md:h-[650px] xl:h-[750px]`}
-      >
-        <h1
-          className="flex-1 font-poppins font-semibold ss:text-[52px] text-[32px] text-white ss:leading-[100px]
-          leading-[60px]"
-        >
-          Choose what describes you the best as a user?
-        </h1>
-        <p className="text-white mb-5 ss:text-[22px] text-[12px]">
-          You can see some examples below of what could you do depending on what
-          kind of business you have
-        </p>
-        <ButtonTypeUser onSelect={handleUserTypeSelect} />
-        <div className="flex-1">
-          {images.length > 0 && <Carousel images={images} />}
-        </div>
-      </div>
-
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Hero />
           <div className="flex lg:flex-row flex-col items-center">
             <img
-              src={tablet}
+              src={mock6}
               alt="billing"
               className="w-[60%] h-[40%] relative z-[5] lg:mb-0 mb-5"
             />
