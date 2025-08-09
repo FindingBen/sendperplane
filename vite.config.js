@@ -10,6 +10,7 @@ export default defineConfig({
         optimizationLevel: 7,
         interlaced: false,
       },
+
       optipng: {
         optimizationLevel: 7,
       },
