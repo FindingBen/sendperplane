@@ -33,6 +33,7 @@ import noBgLogo from "./noBgLogo.png";
 import mock4 from "./all-devices-white.png";
 import mock5 from "./laptop.png";
 import mock6 from "./imacMockup.png";
+import shopify from "./shopifyA.png";
 
 export {
   airbnb,
@@ -70,4 +71,5 @@ export {
   mock4,
   mock5,
   mock6,
+  shopify,
 };
