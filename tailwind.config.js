@@ -9,6 +9,11 @@ module.exports = {
         secondary: "#00f6ff",
         dimWhite: "rgba(255, 255, 255, 0.7)",
         dimBlue: "rgba(9, 151, 124, 0.1)",
+        lightGray: "#2C365E",
+        lightBlue: "#2C365E",
+        ngrokBlue: "#3e6ff4",
+        ngrokGray: "#23253a",
+        ngrokDark: "#151530",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

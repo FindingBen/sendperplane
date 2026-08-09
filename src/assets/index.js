@@ -34,6 +34,7 @@ import mock4 from "./all-devices-white.png";
 import mock5 from "./laptop.png";
 import mock6 from "./imacMockup.png";
 import shopify from "./shopifyA.png";
+import heroImage2 from "./hero_image_2.png";
 
 export {
   airbnb,
@@ -72,4 +73,5 @@ export {
   mock5,
   mock6,
   shopify,
+  heroImage2,
 };

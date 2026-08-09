@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { close, menu, noBgLogo } from "../assets";
+import { close, menu } from "../assets";
 import { navLinks } from "../constants";
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -7,11 +7,16 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      <img
-        src={noBgLogo}
-        alt="hoobank"
-        className="w-[84px] h-[72px] object-fit"
-      />
+      <div className="flex items-center">
+        <img
+          src="/icon_transparent.png"
+          alt="Sendperplane"
+          className="w-[56px] h-[56px] object-contain"
+        />
+        <span className="font-poppins font-bold text-white text-[20px] ml-2">
+          Sendperplane
+        </span>
+      </div>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
