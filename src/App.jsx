@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./style";
 import { Navbar, Business, Footer } from "./components";
-import ProductVideo from "./components/ProductVideo";
 import { tablet } from "./assets";
-import { heroImage2 } from "./assets";
+import { heroImage2, secondHero } from "./assets";
 import ButtonTypeUser from "./components/ButtonTypeUser";
 import Carousel from "./components/Carousel";
 import retailImages from "./assets/retail/index.js"; // Adjust the path according to your folder structure
@@ -54,17 +53,20 @@ const App = () => {
         <div className={`${styles.boxWidth}`}>
           {/* <Stats /> */}
           <Business />
-          <div className="flex flex-row">
-            <ProductVideo id="product" />
-            <div className="mx-auto">
-              <h1
-                className="flex-1 font-poppins ml-5 font-semibold ss:text-[52px] text-[32px] text-white ss:leading-[70px]
-          leading-[30px]"
-              >
-                See what <br className="sm:block hidden" />
-                is Sendperplane and how it works!
-              </h1>
-            </div>
+          <div className="w-full relative" id="product">
+            <img
+              src={secondHero}
+              alt="Build your content, express your product"
+              className="w-full h-auto relative z-[5] rounded-2xl shadow-2xl"
+            />
+            <a
+              href="https://spplane.app/register"
+              target="_blank"
+              rel="noreferrer"
+              className="absolute z-[10] right-[3%] sm:right-[4%] top-[68%] xs:top-[70%] px-5 sm:px-8 py-2.5 sm:py-4 rounded-lg bg-ngrokBlue font-poppins font-medium text-white text-[13px] sm:text-[18px] hover:opacity-90 transition-opacity shadow-lg"
+            >
+              Try it out
+            </a>
           </div>
           {/* <Billing />
         <CardDeal />

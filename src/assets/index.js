@@ -35,6 +35,7 @@ import mock5 from "./laptop.png";
 import mock6 from "./imacMockup.png";
 import shopify from "./shopifyA.png";
 import heroImage2 from "./hero_image_2.png";
+import secondHero from "./second_hero.png";
 
 export {
   airbnb,
@@ -74,4 +75,5 @@ export {
   mock6,
   shopify,
   heroImage2,
+  secondHero,
 };
