@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const API_URL = "http://localhost:8888";
+const API_URL = "https://sendperplane-blog-backend-production.up.railway.app";
 const POSTS_PER_PAGE = 10;
 
 const createSlug = (value = "") =>

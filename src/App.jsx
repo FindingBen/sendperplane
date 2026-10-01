@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import styles from "./style";
 import { Navbar, Business, Footer, Blog } from "./components";
@@ -79,7 +78,9 @@ const App = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blogs" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPageDetail />} />
+      <Route path="/blogs/:slug" element={<BlogPageDetail />} />
     </Routes>
   );
 };
