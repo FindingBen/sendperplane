@@ -11,7 +11,7 @@ import Stats from "./Stats";
 import Testimonials from "./Testimonials";
 import FeedbackCard from "./FeedbackCard";
 import Footer from "./Footer";
-
+import Blog from "./Blog";
 
 export {
   Navbar,
@@ -27,4 +27,5 @@ export {
   Button,
   FeedbackCard,
   Footer,
+  Blog,
 };

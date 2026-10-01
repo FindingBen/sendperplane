@@ -39,7 +39,9 @@ const Navbar = () => {
               href={
                 nav.id === "shopify"
                   ? "https://apps.shopify.com/sendperplane"
-                  : `#${nav.id}`
+                  : nav.id === "blog"
+                    ? "/blog"
+                    : `#${nav.id}`
               }
               target={nav.id === "shopify" ? "_blank" : "_self"}
               rel={nav.id === "shopify" ? "noopener noreferrer" : ""}
@@ -72,7 +74,19 @@ const Navbar = () => {
                 }`}
                 onClick={() => setActive(nav.title)}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
+                <a
+                  href={
+                    nav.id === "shopify"
+                      ? "https://apps.shopify.com/sendperplane"
+                      : nav.id === "blog"
+                        ? "/blog"
+                        : `#${nav.id}`
+                  }
+                  target={nav.id === "shopify" ? "_blank" : "_self"}
+                  rel={nav.id === "shopify" ? "noopener noreferrer" : ""}
+                >
+                  {nav.title}
+                </a>
               </li>
             ))}
           </ul>
