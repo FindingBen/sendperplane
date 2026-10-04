@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 const API_URL = "https://sendperplane-blog-backend-production.up.railway.app";
@@ -209,11 +209,10 @@ export const BlogPost = () => {
         {post.date && <span>{new Date(post.date).toLocaleDateString()}</span>}
         {post.readTime && <span>{post.readTime}</span>}
       </div>
-      <div className="mt-10 space-y-6 text-base leading-8 text-gray-200">
-        {body.split("\n\n").map((paragraph, index) => (
-          <p key={`${slug}-${index}`}>{paragraph}</p>
-        ))}
-      </div>
+      <div
+        className="mt-10 space-y-6 text-base leading-8 text-gray-200"
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
     </article>
   );
 };
