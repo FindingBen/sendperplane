@@ -158,7 +158,10 @@ export const BlogPost = () => {
         );
         if (!postResponse.ok) throw new Error("Unable to load this blog post.");
         const data = await postResponse.json();
-        const fetchedPost = data?.blog ?? data?.data ?? data;
+        const fetchedData = data?.blog ?? data?.data ?? data;
+        const fetchedPost = Array.isArray(fetchedData)
+          ? fetchedData[0]
+          : fetchedData;
 
         if (!cancelled) setPost(fetchedPost);
       } catch (fetchError) {
