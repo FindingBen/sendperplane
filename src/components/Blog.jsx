@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 const API_URL = "https://sendperplane-blog-backend-production.up.railway.app";
 const POSTS_PER_PAGE = 10;
@@ -70,6 +70,7 @@ const Blog = () => {
                   <Link
                     key={postId ?? slug}
                     to={`/blog/${slug}`}
+                    state={{ postId }}
                     className="block rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/10 transition hover:border-ngrokBlue/40 hover:bg-white/10"
                   >
                     {post.category && (
@@ -127,6 +128,8 @@ const Blog = () => {
 
 export const BlogPost = () => {
   const { slug } = useParams();
+  const location = useLocation();
+  const postIdFromNavigation = location.state?.postId;
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -136,16 +139,20 @@ export const BlogPost = () => {
 
     const loadPost = async () => {
       try {
-        const listResponse = await fetch(`${API_URL}/blogs`);
-        if (!listResponse.ok) throw new Error("Unable to load blog posts.");
-        const list = getPosts(await listResponse.json());
-        const matchedPost = list.find((item) => {
-          const title = item.title ?? item.name ?? "";
-          return (item.slug || createSlug(title)) === slug;
-        });
+        let postId = postIdFromNavigation;
+        if (!postId) {
+          const listResponse = await fetch(`${API_URL}/blogs`);
+          if (!listResponse.ok) throw new Error("Unable to load blog posts.");
+          const list = getPosts(await listResponse.json());
+          const matchedPost = list.find((item) => {
+            const title = item.title ?? item.name ?? "";
+            return (item.slug || createSlug(title)) === slug;
+          });
 
-        if (!matchedPost) throw new Error("Blog post not found.");
-        const postId = matchedPost.id ?? matchedPost._id;
+          if (!matchedPost) throw new Error("Blog post not found.");
+          postId = matchedPost.id ?? matchedPost._id;
+        }
+
         const postResponse = await fetch(
           `${API_URL}/blog?id=${encodeURIComponent(postId)}`
         );
@@ -165,7 +172,7 @@ export const BlogPost = () => {
     return () => {
       cancelled = true;
     };
-  }, [slug]);
+  }, [slug, postIdFromNavigation]);
 
   if (loading) {
     return <p className="mx-auto max-w-4xl px-4 py-16 text-gray-300">Loading post...</p>;
