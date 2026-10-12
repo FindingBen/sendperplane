@@ -2,7 +2,21 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 const API_URL = "https://sendperplane-blog-backend-production.up.railway.app";
+const SITE_URL = "https://sendperplane.com";
 const POSTS_PER_PAGE = 10;
+
+const updateCanonicalLink = (path) => {
+  let canonicalLink = document.querySelector('link[rel="canonical"]');
+
+  if (!canonicalLink) {
+    canonicalLink = document.createElement("link");
+    canonicalLink.rel = "canonical";
+    document.head.appendChild(canonicalLink);
+  }
+
+  canonicalLink.href = `${SITE_URL}${path}`;
+  return () => canonicalLink.remove();
+};
 
 const createSlug = (value = "") =>
   value
@@ -16,11 +30,39 @@ const getPosts = (data) => {
   return data?.blogs ?? data?.posts ?? data?.data ?? [];
 };
 
+const formatPostDate = (value) => {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+};
+
+const getFeaturedImage = (post) => {
+  const image =
+    post.featured_image ??
+    post.featuredImage ??
+    post.feature_image ??
+    post.image_url ??
+    post.thumbnail_url ??
+    post.image ??
+    post.thumbnail;
+
+  if (typeof image === "string") return image;
+  return image?.url ?? image?.src ?? "";
+};
+
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  useEffect(() => updateCanonicalLink("/blog"), []);
 
   useEffect(() => {
     fetch(`${API_URL}/blogs`)
@@ -65,28 +107,52 @@ const Blog = () => {
                 const title = post.title ?? post.name ?? "Untitled post";
                 const slug = post.slug || createSlug(title);
                 const excerpt = post.excerpt ?? post.summary ?? "";
+                const publishedDate = formatPostDate(post.created_at ?? post.date);
+                const featuredImage = getFeaturedImage(post);
 
                 return (
                   <Link
                     key={postId ?? slug}
                     to={`/blog/${slug}`}
                     state={{ postId }}
-                    className="block rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/10 transition hover:border-ngrokBlue/40 hover:bg-white/10"
+                    className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-lg shadow-black/10 transition hover:border-ngrokBlue/40 hover:bg-white/10"
                   >
-                    {post.category && (
-                      <span className="inline-flex rounded-full border border-ngrokBlue/30 bg-ngrokBlue/10 px-3 py-1 text-xs font-medium text-ngrokBlue">
-                        {post.category}
-                      </span>
-                    )}
-                    <h3 className="mt-5 text-xl font-semibold leading-snug text-white">
-                      {title}
-                    </h3>
-                    <p className="mt-4 text-sm leading-7 text-gray-300">
-                      {excerpt}
-                    </p>
-                    <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4 text-xs text-gray-400">
-                      <span>{post.date ? new Date(post.date).toLocaleDateString() : ""}</span>
-                      {post.readTime && <span>{post.readTime}</span>}
+                    <div className="relative aspect-video w-full overflow-hidden bg-[#123246]">
+                      {featuredImage ? (
+                        <img
+                          src={featuredImage}
+                          alt={title}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                      ) : (
+                        <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#102b3b_0%,#15526b_58%,#33bbcf_100%)]">
+                          <div aria-hidden="true" className="absolute inset-3 border border-white/20 sm:inset-5" />
+                          <div className="relative flex flex-col items-center text-center text-white">
+                            <span className="font-poppins text-4xl font-bold sm:text-5xl">SP</span>
+                            <span className="mt-1 text-[10px] font-semibold uppercase text-white/75 sm:text-xs">
+                              Featured story
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-1 flex-col p-5 sm:p-6">
+                      {post.category && (
+                        <span className="inline-flex self-start rounded-full border border-ngrokBlue/30 bg-ngrokBlue/10 px-3 py-1 text-xs font-medium text-ngrokBlue">
+                          {post.category}
+                        </span>
+                      )}
+                      <h3 className="mt-4 text-xl font-semibold leading-snug text-white">
+                        {title}
+                      </h3>
+                      <p className="mt-3 flex-1 text-sm leading-7 text-gray-300">
+                        {excerpt}
+                      </p>
+                      <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-white/10 pt-4 text-xs text-gray-400">
+                        {publishedDate && <span>Published {publishedDate}</span>}
+                        {post.readTime && <span>{post.readTime}</span>}
+                      </div>
                     </div>
                   </Link>
                 );
@@ -133,6 +199,8 @@ export const BlogPost = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  useEffect(() => updateCanonicalLink(`/blog/${slug}`), [slug]);
 
   useEffect(() => {
     let cancelled = false;
@@ -194,6 +262,7 @@ export const BlogPost = () => {
 
   const title = post.title ?? post.name ?? "Untitled post";
   const body = post.body ?? post.content ?? post.description ?? "";
+  const publishedDate = formatPostDate(post.created_at ?? post.date);
 
   return (
     <article className="mx-auto max-w-4xl px-4 py-16 text-white sm:px-6 lg:px-8">
@@ -209,11 +278,11 @@ export const BlogPost = () => {
       )}
       <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-5xl">{title}</h1>
       <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-300">
-        {post.date && <span>{new Date(post.date).toLocaleDateString()}</span>}
+        {publishedDate && <span>Published {publishedDate}</span>}
         {post.readTime && <span>{post.readTime}</span>}
       </div>
       <div
-        className="mt-10 space-y-6 text-base leading-8 text-gray-200"
+        className="blog-content mt-10 text-base leading-8 text-gray-200"
         dangerouslySetInnerHTML={{ __html: body }}
       />
     </article>

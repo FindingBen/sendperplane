@@ -1,22 +1,30 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { close, menu } from "../assets";
 import { navLinks } from "../constants";
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
+  const { pathname } = useLocation();
+
+  const getNavHref = (id) => {
+    if (id === "shopify") return "https://apps.shopify.com/sendperplane";
+    if (id === "blog") return "/blog";
+    return pathname === "/" ? `#${id}` : `/#${id}`;
+  };
 
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar relative">
-      <div className="flex items-center">
+    <nav className="w-full flex py-6 justify-between items-center navbar relative z-50">
+      <Link to="/" aria-label="Sendperplane home" className="flex items-center">
         <img
           src="/icon_transparent.png"
-          alt="Sendperplane"
+          alt=""
           className="w-[56px] h-[56px] object-contain"
         />
         <span className="font-poppins font-bold text-white text-[20px] ml-2">
           Sendperplane
         </span>
-      </div>
+      </Link>
 
       <a
         target="_blank"
@@ -36,13 +44,7 @@ const Navbar = () => {
             onClick={() => setActive(nav.title)}
           >
             <a
-              href={
-                nav.id === "shopify"
-                  ? "https://apps.shopify.com/sendperplane"
-                  : nav.id === "blog"
-                    ? "/blog"
-                    : `#${nav.id}`
-              }
+              href={getNavHref(nav.id)}
               target={nav.id === "shopify" ? "_blank" : "_self"}
               rel={nav.id === "shopify" ? "noopener noreferrer" : ""}
             >
@@ -75,13 +77,7 @@ const Navbar = () => {
                 onClick={() => setActive(nav.title)}
               >
                 <a
-                  href={
-                    nav.id === "shopify"
-                      ? "https://apps.shopify.com/sendperplane"
-                      : nav.id === "blog"
-                        ? "/blog"
-                        : `#${nav.id}`
-                  }
+                  href={getNavHref(nav.id)}
                   target={nav.id === "shopify" ? "_blank" : "_self"}
                   rel={nav.id === "shopify" ? "noopener noreferrer" : ""}
                 >

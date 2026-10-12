@@ -12,14 +12,14 @@ const HomePage = () => (
       </div>
     </div>
 
-    <div className={`bg-ngrokDark ${styles.flexStart} relative overflow-hidden`}>
+      <div className={`bg-ngrokDark ${styles.flexStart} relative w-full overflow-hidden`}>
       <div className="absolute z-[0] w-[60%] h-[60%] rounded-full bg-ngrokBlue opacity-20 blur-[120px] -top-20 -left-20" />
-      <div className={`relative z-[1]`}>
+      <div className="relative z-[1] w-full">
         <div className="w-full relative">
           <img
             src={heroImage2}
             alt="Sendperplane dashboard on a laptop"
-            className="w-full h-auto relative z-[5] rounded-2xl shadow-2xl"
+            className="relative z-[5] block h-auto w-full shadow-2xl"
           />
           <a
             href="https://spplane.app/register"
@@ -36,11 +36,11 @@ const HomePage = () => (
     <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
       <div className={`${styles.boxWidth}`}>
         <Business />
-        <div className="w-full relative" id="product">
+        <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2" id="product">
           <img
             src={secondHero}
             alt="Build your content, express your product"
-            className="w-full h-auto relative z-[5] rounded-2xl shadow-2xl"
+            className="relative z-[5] block h-auto w-full shadow-2xl"
           />
           <a
             href="https://spplane.app/register"
